@@ -14,6 +14,7 @@ export default class Home extends Component {
         this.onChange=this.onChange.bind(this)
         this.onEnter=this.onEnter.bind(this)
         this.afterSearch = this.afterSearch.bind(this)
+    
     }
     onChange(value, evt) {
         this.setState({
@@ -25,6 +26,8 @@ export default class Home extends Component {
             searchResponse: res
         }) 
     }
+
+
 
     onEnter(value, evt) {
         
@@ -54,9 +57,8 @@ export default class Home extends Component {
 
     
     render() {
-        console.log(this.state.searchResponse)
-       const abc = this.state.searchResponse.map(el => {
-            return <ShowEachBook bookInfo={el} />
+       const listOfBooks = this.state.searchResponse.map(el => {
+            return <ShowEachBook bookInfo={el}  />
         })
 
         return (
@@ -67,7 +69,7 @@ export default class Home extends Component {
                 onChange={(value, evt) => this.onChange(value, evt)}
                 onEnter={(value, evt) => this.onEnter(value, evt)}
                 />
-                {abc}
+                {listOfBooks}
             </div>
         )
     }
